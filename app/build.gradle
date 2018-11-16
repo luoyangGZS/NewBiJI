@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+
+//拿到时间
+def getTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getDefault());
+}
+
+
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.luoyangcomputer.newbiji"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+
+        release {
+            minifyEnabled true
+            zipAlignEnabled true  // Zipalign优化
+            shrinkResources true // 移除无用的resource文件,必须和minifyEnabled 一起使用
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 打包后应用名称
+            applicationVariants.all { variant ->
+                            variant.outputs.all { output ->
+                                def outputFile = output.outputFile
+                                def  fileName
+                                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                                    if ("release".equals(variant.buildType.name)) {
+                                          fileName = "luoyBiJi_R${defaultConfig.versionName}.${getTime()}.apk"
+                                        //output.outputFile = new File(outputFile.parent, fileName)
+                                        //outputFileName = new File("../../../release/", fileName)
+                                       // outputFileName = fileName
+                                    } else if ("debug".equals(variant.buildType.name)) {
+                                         fileName = "luoyBiJi_dubeg${defaultConfig.versionName}.${getTime()}.apk"
+                                    }
+                                    outputFileName = fileName
+                                }
+                }
+            }
+        }
+
+        //这是系统默认的生成debug.apk的代码，我这边是提出来对比release的
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}

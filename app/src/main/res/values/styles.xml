@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<style name="AppBaseTheme" parent="@android:style/Theme.Light" />-->
+    <!--<style name="AppTheme" parent="@style/AppBaseTheme" />-->
+        <style name="AppTheme" parent="Theme.AppCompat.Light">
+            <!-- Customize your theme here. -->
+            <!--<item name="android:textSize">20dp</item>-->
+            <item name="colorPrimary">@color/colorPrimary</item>
+            <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+            <item name="colorAccent">@color/colorAccent</item>
+        </style>
+
+    <!--<style name="CustomTheme">-->
+        <!--<item name="android:windowNoTitle">true</item>-->
+        <!--<item name="windowFrame">@drawable/screen_frame</item>-->
+        <!--<item name="windowBackground">@drawable/screen_background_white</item>-->
+        <!--<item name="panelForegroundColor">#FF000000</item>-->
+        <!--<item name="panelBackgroundColor">#FFFFFFFF</item>-->
+        <!--<item name="panelTextColor">?panelForegroundColor</item>-->
+        <!--<item name="panelTextSize">14</item>-->
+        <!--<item name="menuItemTextColor">?panelTextColor</item>-->
+        <!--<item name="menuItemTextSize">?panelTextSize</item>-->
+    <!--</style>-->
+
+</resources>
